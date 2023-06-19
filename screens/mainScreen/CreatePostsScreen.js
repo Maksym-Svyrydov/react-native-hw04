@@ -1,17 +1,24 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { Camera } from 'expo-camera';
+import { MaterialIcons } from '@expo/vector-icons';
 export default function NewPostScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTxt}>Створити публікіцію</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Image
-            style={styles.logoutIcon}
-            source={require('../../img/arrow-left.svg')}
-          />
+      <Camera style={styles.camera}>
+        <TouchableOpacity style={{}} onPress={() => {}}>
+          <View style={styles.iconBg}>
+            <MaterialIcons name="camera-alt" size={24} color="#BDBDBD" />
+          </View>
         </TouchableOpacity>
-      </View>
+      </Camera>
+      <Text style={styles.cameraText}>Завантажте фото</Text>
+      {/* <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Image
+          style={styles.logoutIcon}
+          source={require('../../img/arrow-left.svg')}
+        />
+      </TouchableOpacity> */}
     </View>
   );
 }
@@ -19,10 +26,13 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    // justifyContent: 'space-between',
+    // alignItems: 'center',
+    // justifyContent: 'center',
     flex: 1,
     backgroundColor: '#FFFFFF',
     position: 'relative',
+    paddingHorizontal: 16,
+    paddingTop: 32,
   },
   header: {
     position: 'absolute',
@@ -62,5 +72,36 @@ const styles = StyleSheet.create({
     bottom: -12,
     width: 24,
     height: 24,
+  },
+  iconBg: {
+    width: 60,
+    height: 60,
+    borderRadius: 60,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  camera: {
+    width: '100%',
+    height: 267,
+    // backgroundColor: '#E8E8E8',
+    backgroundColor: 'rgba(232, 232, 232, 1)',
+    // width: '100%',
+    // height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderRadius: 8,
+  },
+  cameraText: {
+    FontFamily: 'Roboto',
+    FontStyle: 'Regular',
+    FontSize: 16,
+    LineHeight: 19,
+    align: 'Left',
+    VerticalAlign: 'Top',
+    color: '#BDBDBD',
+    marginTop: 8,
   },
 });

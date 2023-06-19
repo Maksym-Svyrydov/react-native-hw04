@@ -1,23 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import { useRoute } from '../../router';
+
 export default function PostScreen({ navigation }) {
-  const handlLogout = () => {
-    return useRoute(null);
-  };
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTxt}>Публикації</Text>
-        <TouchableOpacity onPress={() => handlLogout()}>
-          {/* <TouchableOpacity onPress={() => navigation.navigate('Login')}> */}
-          <Image
-            style={styles.logoutIcon}
-            source={require('../../img/logout_icon.png')}
-          />
-        </TouchableOpacity>
-      </View>
-
       <View style={styles.list}>
         <View style={styles.user}>
           <Image
@@ -83,7 +69,7 @@ const styles = StyleSheet.create({
   },
 
   list: {
-    marginTop: 110,
+    marginTop: 32,
     paddingTop: 0,
     paddingLeft: 16,
     gap: 16,

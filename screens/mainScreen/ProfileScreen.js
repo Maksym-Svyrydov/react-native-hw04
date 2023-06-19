@@ -3,15 +3,12 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 export default function Profile({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTxt}>User</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Image
-            style={styles.logoutIcon}
-            source={require('../../img/logout_icon.png')}
-          />
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Image
+          style={styles.logoutIcon}
+          source={require('../../img/logout_icon.png')}
+        />
+      </TouchableOpacity>
     </View>
   );
 }

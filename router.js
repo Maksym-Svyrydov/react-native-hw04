@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons, AntDesign, Feather } from '@expo/vector-icons';
-
+import { HeaderBackButton } from '@react-navigation/elements';
 const MainStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
 import LoginForm from './screens/auth/LoginScreen';
@@ -12,7 +12,7 @@ import CreatePostScreen from './screens/mainScreen/CreatePostsScreen';
 import Profile from './screens/mainScreen/ProfileScreen';
 import { View } from 'react-native';
 
-export const useRoute = (isAuth = false) => {
+export const useRoute = (isAuth = true) => {
   console.log(isAuth);
   if (!isAuth) {
     return (
@@ -61,7 +61,10 @@ export const useRoute = (isAuth = false) => {
         name="Posts"
         component={PostScreen}
         options={{
-          headerShown: false,
+          title: 'Публікації',
+          headerShown: true,
+          headerStyle: {},
+
           tabBarShowLabel: false,
           tabBarIcon: ({}) => {
             return (
@@ -78,8 +81,21 @@ export const useRoute = (isAuth = false) => {
         name="CretePost"
         component={CreatePostScreen}
         options={{
+          title: 'Створити публикацію',
           tabBarShowLabel: false,
-          headerShown: false,
+          headerShown: true,
+          headerLeft: () => (
+            <HeaderBackButton
+              label="Hello"
+              onPress={() => navigation.navigate('Posts')}
+            />
+            // <AntDesign
+            //   name="arrowleft"
+            //   size={24}
+            //   color="black"
+            // onPress={() => navigation.goBack()}
+            // />
+          ),
           tabBarIcon: ({ focused, size, color }) => {
             return (
               <View>
